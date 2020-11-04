@@ -46,7 +46,7 @@ const StatsPage = ({ data }) => {
                 <h3>Top categories</h3>
                 <PieChart width={450} height={275}>
                     <LabelList dataKey="name" position="top" />
-                    <Pie data={dataCategories} dataKey="value" nameKey="name" cx="50%" cy="50%" fill={theme.palette.primary.secondary} label={(entry) => entry.name} />
+                    <Pie data={dataCategories} dataKey="value" nameKey="name" cx="50%" cy="50%" fill={theme.palette.secondary.main} label={(entry) => entry.name} />
 
                 </PieChart>
             </div>
