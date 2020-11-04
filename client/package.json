@@ -1,0 +1,21 @@
+{
+  "name": "with-context-api",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "axios": "^0.21.0",
+    "mongoose": "^5.10.11",
+    "next": "^10.0.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "recharts": "^1.8.5",
+    "sass": "^1.26.10"
+  },
+  "license": "ISC"
+}
