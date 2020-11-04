@@ -6,11 +6,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://shoppingify-dev-challenge.vercel.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/Benjamin-Roger/shoppingifyChallenge">
+    <a href="https://github.com/Benjamin-Roger/shoppingifyDevChallenge">
       Solution
     </a>
     <span> | </span>
@@ -42,12 +42,12 @@ Create 3 collections :
 Create a few items with the following structure
 ```json
     {
-        _id: 5f9fb2318e7d6fb94515ccd9
-        name: "Avocado 2kg"
-        category: "Vegetables"
-        amount: 1
-        note: "Hello avocado"
-        image: "https://i.imgur.com/zPu5pXI.jpeg"
+        "_id": "5f9fb2318e7d6fb94515ccd9",
+        "name": "Avocado 2kg",
+        "category": "Vegetables",
+        "amount": 1,
+        "note": "Hello avocado",
+        "image": "https://i.imgur.com/zPu5pXI.jpeg"
     }
 ```
 
