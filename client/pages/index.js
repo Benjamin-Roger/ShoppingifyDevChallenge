@@ -4,7 +4,7 @@ import ItemSearch from '../components/ItemSearch'
 import ItemCard from '../components/ItemCard'
 import getUniqueKeys from "../utils/sortItems";
 
-import { useContext } from 'react';
+import { useContext, useImperativeHandle, useState } from 'react';
 import { ListContextProvider, CurrentShoppingList, ListDispatch } from '../components/ContextComponents/CurrentShoppingList/context.js'
 
 
@@ -25,7 +25,10 @@ function AddItemToList({ item }) {
 }
 
 
-const IndexPage = ({ data, dataCat }) => {
+const IndexPage = ({ data }) => {
+
+  // Initiate word filter state
+  const [wordFilter,setWordFilter] = useState('');
 
   // Initialize the body
   var body = '';
@@ -35,7 +38,7 @@ const IndexPage = ({ data, dataCat }) => {
     body = <p>{data.message}</p>
   }
   else {
-    var arrItems = data;
+    var arrItems = data.filter((item) => item.name.toLowerCase().includes(wordFilter));
 
     // Get the keys to sort the items by categories
     const [arr, uniqueCategories] = getUniqueKeys(arrItems, 'category');
@@ -68,7 +71,7 @@ const IndexPage = ({ data, dataCat }) => {
       <ListContextProvider>
         <Layout title="Home" rightPanel={<CurrentShoppingList />} >
 
-          <ItemSearch />
+          <ItemSearch handleFilterUpdate={(string) => setWordFilter(string)} />
 
           <h1><span className="text-main-color">Shoppingify</span> allows you to take your shopping list wherever you go.</h1>
 
