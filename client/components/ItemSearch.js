@@ -9,8 +9,8 @@ const ItemSearch = ({ handleFilterUpdate }) => {
   const [value, setValue] = useState('');
 
   const handleChange = (e) => {
-    setValue(e.target.value.toLowerCase());
-    handleFilterUpdate(e.target.value);
+    setValue(e.target.value);
+    handleFilterUpdate(e.target.value.toLowerCase());
   };
 
   return (
