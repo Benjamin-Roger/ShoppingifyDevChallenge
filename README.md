@@ -92,10 +92,10 @@ Deploy the example using [Vercel](https://vercel.com):
 
 ### API app
 
-[![Deploy with Vercel](https://vercel.com/button)](https://github.com/Benjamin-Roger/shoppingifyDevChallenge/api)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/Benjamin-Roger/shoppingifyDevChallenge/api)
 
 ### Client app
 
-[![Deploy with Vercel](https://vercel.com/button)](https://github.com/Benjamin-Roger/shoppingifyDevChallenge/client)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/Benjamin-Roger/shoppingifyDevChallenge/client)
 
 Be careful to add the environment variables !
