@@ -4,7 +4,19 @@ require('../../../../db/models/Lists');
 
 var connectionString = process.env.MONGODB_CONNECTION_STRING;
 
+import runCorsMiddleware from '../../../../utils/corsMiddleware';
+import Cors from 'cors';
+
+// Initializing the cors middleware
+const cors = Cors({
+    methods: ['DELETE'],
+})
+
 module.exports = async (req, res) => {
+
+
+    // Run the cors middleware
+    await runCorsMiddleware(req, res, cors);
 
     if (req.method = "DELETE") {
 
@@ -28,7 +40,7 @@ module.exports = async (req, res) => {
             })
         } else {
             return res.status(404).json({
-                message:`No list in the database with the id ${listValuesToDelete._id}`
+                message: `No list in the database with the id ${listValuesToDelete._id}`
             });
         }
 

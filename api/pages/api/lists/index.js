@@ -3,7 +3,18 @@ require('../../../db/models/Lists');
 
 var connectionString = process.env.MONGODB_CONNECTION_STRING;
 
+import runCorsMiddleware from '../../../../utils/corsMiddleware';
+import Cors from 'cors';
+
+// Initializing the cors middleware
+const cors = Cors({
+    methods: ['GET'],
+})
+
 module.exports = async (req, res) => {
+
+    // Run the cors middleware
+    await runCorsMiddleware(req, res, cors);
 
     // Open connection
     const connector = mongoose.connect(connectionString, { useNewUrlParser: true });
