@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-require('../../../../db/models/Lists');
+require('@/db/models/Lists');
 
-import runCorsMiddleware from '../../../../utils/corsMiddleware';
+import runCorsMiddleware from '@/utils/corsMiddleware';
 import Cors from 'cors';
 
 // Initializing the cors middleware

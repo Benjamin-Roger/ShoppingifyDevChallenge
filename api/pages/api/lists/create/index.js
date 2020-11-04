@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-require('../../../../db/models/Lists');
+require('@/db/models/Lists');
 
-import runCorsMiddleware from '../../../../utils/corsMiddleware';
+import runCorsMiddleware from '@/utils/corsMiddleware';
 import Cors from 'cors';
 
 // Initializing the cors middleware
@@ -10,7 +10,7 @@ const cors = Cors({
     methods: ['POST'],
 })
 
-import { toKebabCase } from '../../../../utils/toKebabCase';
+import { toKebabCase } from '@/utils/toKebabCase';
 
 var connectionString = process.env.MONGODB_CONNECTION_STRING;
 

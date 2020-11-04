@@ -1,10 +1,10 @@
-import getUniqueKeys from "../../../../utils/sortItems";
+import getUniqueKeys from "@/utils/sortItems";
 
 const mongoose = require('mongoose');
 
-require('../../../../db/models/Items');
+require('@/db/models/Items');
 
-import runCorsMiddleware from '../../../../utils/corsMiddleware';
+import runCorsMiddleware from '@/utils/corsMiddleware';
 import Cors from 'cors';
 
 // Initializing the cors middleware
