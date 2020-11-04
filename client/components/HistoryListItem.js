@@ -10,6 +10,9 @@ import { useState } from 'react';
 
 import axios from 'axios';
 
+import getConfig from 'next/config';
+
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 const DeleteButton = ({ item, toggleDisplayNone }) => {
 
@@ -18,7 +21,7 @@ const DeleteButton = ({ item, toggleDisplayNone }) => {
 
         // Delete the item - has to be params due to DELETE method (does not accept other ways)
         axios
-            .delete(`${process.env.BASE_API_URL}/api/lists/delete`, { params: { ...item } })
+            .delete(`${publicRuntimeConfig.BASE_API_URL}/api/lists/delete`, { params: { ...item } })
             .then(res => {
                 console.log(res.data.message);
 

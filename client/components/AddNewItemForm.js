@@ -19,7 +19,6 @@ import SaveIcon from '@material-ui/icons/Save';
 import axios from 'axios';
 
 import getConfig from 'next/config';
-
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 
