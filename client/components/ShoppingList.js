@@ -1,4 +1,4 @@
-import SidePanelButton from './ContextComponents/SidePanelContext';
+import SidePanelButton from '@/context/SidePanelContext';
 
 import CreateIcon from '@material-ui/icons/Create';
 import FormControl from '@material-ui/core/FormControl';
@@ -13,8 +13,11 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 import { useContext, useEffect } from 'react';
+import { ListDispatch } from '@/context/CurrentShoppingList/context'
+import { NotificationDispatch } from '@/context/Notification/context'
+import { addNewNotification } from '@/context/Notification/utils'
+
 
 import getUniqueKeys from "@/utils/sortItems";
 import AddNewItemForm from '@/components/AddNewItemForm';
@@ -124,12 +127,16 @@ const ShoppingList = ({ listContext }) => {
 
     const emptyList = items.length ? false : true;
 
+    // Get dispatch contexts
+
+    const listDispatch = useContext(ListDispatch);
+    const notificationDispatch = useContext(NotificationDispatch);
+
     // Initiate different states
     const [name, setName] = React.useState(listContext.name || '');
     const [completed, toggleComplete] = React.useState(false);
     const [editing, toggleEditing] = React.useState(true);
     const [_id, setId] = React.useState(listContext._id || '');
-    const [confirmationMessage, setConfirmationMessage] = React.useState('');
 
 
     useEffect(() => {
@@ -156,7 +163,13 @@ const ShoppingList = ({ listContext }) => {
             axios
                 .put(`${publicRuntimeConfig.BASE_API_URL}/api/lists/update`, newList)
                 .then(res => {
-                    setConfirmationMessage(res.data.message);
+
+                    addNewNotification({
+                        content: res.data.message,
+                        severity: (newList.status === 'completed') ? 'info' : 'success'
+                    },
+                        notificationDispatch);
+
 
                     // The list status is updated to completed or completing if success
                     toggleComplete((status === 'completed'));
@@ -165,7 +178,12 @@ const ShoppingList = ({ listContext }) => {
                 })
                 .catch(err => {
                     console.log('error in request -', err);
-                    setConfirmationMessage("The list has not been saved properly, try another title. - with ID");
+
+                    addNewNotification({
+                        content: `The list has not been saved properly, try another title.`,
+                        severity: 'error'
+                    },
+                        notificationDispatch);
                 });
 
 
@@ -174,9 +192,12 @@ const ShoppingList = ({ listContext }) => {
             axios
                 .post(`${publicRuntimeConfig.BASE_API_URL}/api/lists/create`, newList)
                 .then(res => {
-                    setConfirmationMessage(`${res.data.message}`);
 
-                    var newId = res.data._id;
+                    addNewNotification({
+                        content: res.data.message,
+                        severity: 'success'
+                    },
+                        notificationDispatch);
 
                     setId(res.data._id);
 
@@ -187,15 +208,17 @@ const ShoppingList = ({ listContext }) => {
                 })
                 .catch(err => {
                     console.log('error in request -', err);
-                    setConfirmationMessage("The list has not been saved properly, try another title. - no ID");
+
+                    addNewNotification({
+                        content: `The list has not been saved properly, try another title.`,
+                        severity: 'error'
+                    },
+                        notificationDispatch);
                 });
         }
 
     }
 
-
-    // Get context
-    const listDispatch = useContext(ListDispatch);
 
     const cancelList = () => {
         // Empty current context
@@ -205,7 +228,6 @@ const ShoppingList = ({ listContext }) => {
         });
 
         // Reinitialize state
-        setConfirmationMessage('');
         toggleEditing(true);
         toggleComplete(false);
         setName('');
@@ -221,6 +243,12 @@ const ShoppingList = ({ listContext }) => {
                     console.log('error in request -', err);
                 });
         }
+
+        addNewNotification({
+            content: `The list has been canceled.`,
+            severity: 'success'
+        },
+            notificationDispatch);
     };
 
 
@@ -240,7 +268,9 @@ const ShoppingList = ({ listContext }) => {
         <CancelDialog
             title="Are you sure you want to cancel that list ?"
             buttonText="Cancel"
-            callback={() => cancelList()} />)
+            disabled={emptyList ?? !name}
+            callback={() => cancelList()} />
+    )
 
     // 
     const completeButton = (< Button
@@ -267,8 +297,6 @@ const ShoppingList = ({ listContext }) => {
                     <SidePanelButton content={<AddNewItemForm />} className="add-item">Add item</SidePanelButton>
                 </div>
 
-                {confirmationMessage ? <p className="danger">{confirmationMessage}</p> : ''}
-
                 <div style={{ display: 'flex' }}>
                     <FormControl>
                         <TextField
@@ -293,7 +321,6 @@ const ShoppingList = ({ listContext }) => {
                 {emptyList ? <EmptyShoppingList /> : <ShoppingListContainer {...{ editing }} {...{ items }} />}
             </div>
 
-            {confirmationMessage ? <p>{confirmationMessage}</p> : ''}
 
             <div className="save-list">
 

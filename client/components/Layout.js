@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from "prop-types";
 import Head from 'next/head'
 
-
 import Header from "@/components/Header"
-
 
 import theme from '../muiTheme.js';
 import { ThemeProvider } from '@material-ui/styles';
 
-import { useSidePanelContext} from './ContextComponents/SidePanelContext'
+import { useSidePanelContext } from '@/context/SidePanelContext';
+
+import { PopUp } from '@/components/Notification';
+
+
 
 
 /**
@@ -18,6 +20,7 @@ import { useSidePanelContext} from './ContextComponents/SidePanelContext'
 
 
 const Layout = (props) => {
+
     const sidePanelState = useSidePanelContext();
 
     return (
@@ -49,6 +52,8 @@ const Layout = (props) => {
                         {props.sidePanel || sidePanelState.content}
                     </aside>
                 </div >
+
+                <PopUp />
             </ThemeProvider >
         </>
 

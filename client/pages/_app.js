@@ -1,5 +1,7 @@
 import App from 'next/app'
-import { SidePanelContextProvider } from '@/components/ContextComponents/SidePanelContext'
+import { SidePanelContextProvider } from '@/context/SidePanelContext'
+import { NotificationContextProvider } from '@/context/Notification/context'
+
 
 import "../styles/app.scss";
 
@@ -11,9 +13,11 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     return (
       <SidePanelContextProvider>
-        
+        <NotificationContextProvider>
+
           <Component {...pageProps} />
-        
+          
+        </NotificationContextProvider>
       </SidePanelContextProvider>
     )
   }

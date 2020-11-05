@@ -1,15 +1,12 @@
 
 
-import { useSidePanelDispatch } from '@/components/ContextComponents/SidePanelContext';
-import { ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
+import { useSidePanelDispatch } from '@/context/SidePanelContext';
+import { ListDispatch } from '@/context/CurrentShoppingList/context.js'
 import { useContext } from 'react';
 
 import Button from '@material-ui/core/Button';
 
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-
-import Link from 'next/link';
-
 
 
 const ItemDetail = ({ item }) => {

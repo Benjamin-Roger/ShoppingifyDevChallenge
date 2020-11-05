@@ -9,6 +9,10 @@
             "@/components/*": [
                 "components/*"
             ]
+            ,
+            "@/context/*": [
+                "context/*"
+            ]
         }
     }
 }

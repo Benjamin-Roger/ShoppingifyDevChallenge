@@ -10,7 +10,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function CancelDialog({ buttonText, title, callback }) {
+export default function CancelDialog({ buttonText, title, callback, disabled }) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -28,7 +28,7 @@ export default function CancelDialog({ buttonText, title, callback }) {
 
     return (
         <div>
-            <Button color="primary" onClick={handleClickOpen}>
+            <Button color="primary" onClick={handleClickOpen} disabled={disabled}>
                 {buttonText}
             </Button>
             <Dialog

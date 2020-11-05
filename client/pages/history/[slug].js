@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 // Local components
 import Layout from '@/components/Layout'
 import ItemCard from '@/components/ItemCard'
@@ -12,7 +10,7 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import getUniqueKeys from "@/utils/sortItems";
 
 // Context
-import { ListDispatch, ListContextProvider, CurrentShoppingList } from '@/components/ContextComponents/CurrentShoppingList/context.js'
+import { ListDispatch, ListContextProvider, CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
 import { useContext } from 'react';
 
 const OpenListButton = ({ data }) => {

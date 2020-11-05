@@ -6,7 +6,7 @@ import HistoryListItem from '@/components/HistoryListItem'
 import { sortByTimeStampKey } from "../utils/sortItems";
 
 
-import { ListContextProvider, CurrentShoppingList } from '@/components/ContextComponents/CurrentShoppingList/context.js'
+import { ListContextProvider, CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
 
 
 const HistoryPage = ({ data }) => {

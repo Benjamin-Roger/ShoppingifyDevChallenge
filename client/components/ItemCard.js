@@ -2,7 +2,7 @@
 import PropTypes from "prop-types"
 import React from "react"
 
-import {useSidePanelDispatch} from '@/components/ContextComponents/SidePanelContext';
+import {useSidePanelDispatch} from '@/context/SidePanelContext';
 import ItemDetail from '@/components/ItemDetail';
 
 

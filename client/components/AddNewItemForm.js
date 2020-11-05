@@ -1,8 +1,8 @@
-import SidePanelButton, { useSidePanelDispatch } from './ContextComponents/SidePanelContext';
+import SidePanelButton, { useSidePanelDispatch } from '@/context/SidePanelContext';
 
-import { ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
+import { ListDispatch } from '@/context/CurrentShoppingList/context.js'
 
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
@@ -19,6 +19,9 @@ import axios from 'axios';
 
 import getConfig from 'next/config';
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+
+import { addNewNotification } from '@/context/Notification/utils';
+import { NotificationDispatch } from 'context/Notification/context';
 
 
 const AddNewItemFormComponent = ({ initialCategories }) => {
@@ -40,17 +43,19 @@ const AddNewItemFormComponent = ({ initialCategories }) => {
     name: ''
   });
 
-
+  // Handle the input changes
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
+  // Handle specifically the extra category input
   const handleChangeNewCat = (event) => {
     setNewCat({
       name: event.target.value
     });
   }
 
+  // Add the new categories to the multi select
   const addNewCat = () => {
 
     // Get new array of categories
@@ -63,8 +68,6 @@ const AddNewItemFormComponent = ({ initialCategories }) => {
       category: newCat.name // Change the category field value to new cat
     })
 
-
-
     // Reset the new category field
     setNewCat({
       name: ''
@@ -74,11 +77,12 @@ const AddNewItemFormComponent = ({ initialCategories }) => {
     // Close the new category field
     setCatInputVisibility(!stateCategoryInputVisibility)
 
-
   }
 
+  // Get the dispatch contexts
   const sidePanelDispatch = useSidePanelDispatch();
   const listDispatch = useContext(ListDispatch);
+  const notificationDispatch = useContext(NotificationDispatch);
 
   // If the item has a name and a category, it can be saved
   const saveAndClose = (event) => {
@@ -93,6 +97,12 @@ const AddNewItemFormComponent = ({ initialCategories }) => {
         type: 'ADD_ITEM',
         item: { ...values, amount: 1 }
       });
+
+      addNewNotification({
+        content: `The item ${values.name} has been added to the list.`,
+        severity: 'success'
+      },
+        notificationDispatch)
     }
   }
 
