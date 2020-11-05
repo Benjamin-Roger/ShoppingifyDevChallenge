@@ -10,7 +10,6 @@
     grid-column-gap: 0;
     grid-template-columns: 75px auto 25vw;
     width: 100%;
-    min-height: 105vh;
     position:relative;
 
     .left-panel {
@@ -20,7 +19,8 @@
 
     .main {
         grid-column: 2;
-        padding: 25px 5%;
+        padding: 25px 10px;
+        width:100%;
     }
 
     .right-panel {
@@ -28,6 +28,7 @@
         height: 100vh;
         position:sticky;
         top:0;
+        flex-grow:1;
         
 
         .container {

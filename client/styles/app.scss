@@ -24,6 +24,8 @@ body {
     margin: 0;
     overflow-x: hidden;
     color: $textColor;
+    width: calc(100vw + 15px);
+    padding-right: 15px;
 }
 
 a {
@@ -36,7 +38,6 @@ li {
     padding: 0;
     list-style: none;
 }
-
 
 /**
  * Items list
@@ -137,7 +138,7 @@ li {
     height: 100%;
 
     .container {
-        padding-bottom: 125px!important;
+        padding-bottom: 125px !important;
     }
     .add-item-cta {
         background: $burgundy;
@@ -184,7 +185,7 @@ li {
         }
 
         p {
-            flex-grow:1;
+            flex-grow: 1;
         }
     }
 
@@ -215,7 +216,7 @@ li {
         position: absolute;
         bottom: 90px;
         right: 10%;
-        width:80%;
+        width: 80%;
         z-index: 1;
     }
 }
@@ -259,8 +260,6 @@ li {
             flex: 1;
             display: flex;
             justify-content: space-between;
-
-            
 
             .status {
                 border: 1px solid black;
