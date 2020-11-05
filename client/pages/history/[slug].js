@@ -10,7 +10,7 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import getUniqueKeys from "@/utils/sortItems";
 
 // Context
-import { ListDispatch, ListContextProvider, CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
+import { ListDispatch, CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
 import { useContext } from 'react';
 
 const OpenListButton = ({ data }) => {
@@ -96,16 +96,13 @@ const ListPage = ({ data }) => {
 
     return (
         <>
-            <ListContextProvider>
                 <Layout title={data?.name || "Shopping List"} rightPanel={<CurrentShoppingList title={data.title} />} >
 
                     <h1>{data?.name || "Shopping List"}</h1>
 
                     {body}
 
-
                 </Layout>
-            </ListContextProvider>
         </>
     )
 }

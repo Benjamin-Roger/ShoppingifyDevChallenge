@@ -12,10 +12,17 @@ import axios from 'axios';
 
 import getConfig from 'next/config';
 
+import { NotificationDispatch } from '@/context/Notification/context';
+import { addNewNotification } from '@/context/Notification/utils';
+import { useContext } from 'react';
+
+
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 const DeleteButton = ({ item, toggleDisplayNone }) => {
 
+    // Get the context
+    const notificationDispatch = useContext(NotificationDispatch);
 
     const handleDelete = () => {
 
@@ -26,6 +33,12 @@ const DeleteButton = ({ item, toggleDisplayNone }) => {
                 console.log(res.data.message);
 
                 if (res.data._id) { toggleDisplayNone() };
+
+                addNewNotification({
+                    content: `The list has been deleted.`,
+                    severity: 'success'
+                },
+                    notificationDispatch);
 
             })
             .catch(err => {

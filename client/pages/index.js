@@ -4,8 +4,8 @@ import ItemSearch from '@/components/ItemSearch'
 import ItemCard from '@/components/ItemCard'
 import getUniqueKeys from "@/utils/sortItems";
 
-import { useContext, useImperativeHandle, useState } from 'react';
-import { ListContextProvider, CurrentShoppingList, ListDispatch } from '@/context/CurrentShoppingList/context.js'
+import { useContext, useState } from 'react';
+import {  CurrentShoppingList, ListDispatch } from '@/context/CurrentShoppingList/context.js'
 
 
 // Insert button to add the items to the current shopping list context
@@ -28,7 +28,7 @@ function AddItemToList({ item }) {
 const IndexPage = ({ data }) => {
 
   // Initiate word filter state
-  const [wordFilter,setWordFilter] = useState('');
+  const [wordFilter, setWordFilter] = useState('');
 
   // Initialize the body
   var body = '';
@@ -68,18 +68,16 @@ const IndexPage = ({ data }) => {
 
   return (
     <>
-      <ListContextProvider>
-        <Layout title="Home" rightPanel={<CurrentShoppingList />} >
+      <Layout title="Home" rightPanel={<CurrentShoppingList />} >
 
-          <ItemSearch handleFilterUpdate={(string) => setWordFilter(string)} />
+        <ItemSearch handleFilterUpdate={(string) => setWordFilter(string)} />
 
-          <h1><span className="text-main-color">Shoppingify</span> allows you to take your shopping list wherever you go.</h1>
+        <h1><span className="text-main-color">Shoppingify</span> allows you to take your shopping list wherever you go.</h1>
 
-          {body}
+        {body}
 
 
-        </Layout>
-      </ListContextProvider>
+      </Layout>
     </>
   )
 };
@@ -91,7 +89,7 @@ export async function getServerSideProps(context) {
   const res = await fetch(`${process.env.BASE_API_URL}/api/items`);
   const data = await res.json()
 
-   // Pass data to the page via props
+  // Pass data to the page via props
   return { props: { data } }
 }
 

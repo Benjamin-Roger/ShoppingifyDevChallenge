@@ -2,7 +2,7 @@ import theme from '../muiTheme';
 
 import Layout from '@/components/Layout'
 
-import { ListContextProvider, CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
+import { CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
 
 import { PieChart, Pie, LabelList } from 'recharts';
 
@@ -56,16 +56,13 @@ const StatsPage = ({ data }) => {
 
     return (
         <>
-            <ListContextProvider>
                 <Layout title="Statistics" rightPanel={<CurrentShoppingList />} >
 
                     <h1>Statistics</h1>
 
                     {body}
 
-
                 </Layout>
-            </ListContextProvider>
         </>
     )
 }

@@ -6,16 +6,16 @@ import HistoryListItem from '@/components/HistoryListItem'
 import { sortByTimeStampKey } from "../utils/sortItems";
 
 
-import { ListContextProvider, CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
+import { CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
 
 
 const HistoryPage = ({ data }) => {
+
 
   // Initialize the body
   var body = '';
 
   // Apply the content for the body
-
   if (data.message) {
     body = <p>{data.message}</p>
 
@@ -37,7 +37,6 @@ const HistoryPage = ({ data }) => {
 
   return (
     <>
-      <ListContextProvider>
         <Layout title="History" rightPanel={<CurrentShoppingList />} >
 
           <h1>Shopping History</h1>
@@ -46,7 +45,6 @@ const HistoryPage = ({ data }) => {
 
 
         </Layout>
-      </ListContextProvider>
     </>
   )
 }

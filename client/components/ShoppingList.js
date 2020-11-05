@@ -180,7 +180,7 @@ const ShoppingList = ({ listContext }) => {
                     console.log('error in request -', err);
 
                     addNewNotification({
-                        content: `The list has not been saved properly, try another title.`,
+                        content: `The list has not been saved, try another title.`,
                         severity: 'error'
                     },
                         notificationDispatch);
