@@ -1,8 +1,8 @@
 import theme from '../muiTheme';
 
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 
-import { ListContextProvider, CurrentShoppingList } from '../components/ContextComponents/CurrentShoppingList/context.js'
+import { ListContextProvider, CurrentShoppingList } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 
 import { PieChart, Pie, LabelList } from 'recharts';
 

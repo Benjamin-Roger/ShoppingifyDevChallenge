@@ -1,18 +1,18 @@
 import Link from 'next/link'
 
 // Local components
-import Layout from '../../components/Layout'
-import ItemCard from '../../components/ItemCard'
+import Layout from '@/components/Layout'
+import ItemCard from '@/components/ItemCard'
 
 // Material UI components
 import Button from '@material-ui/core/Button';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 
 // Utils
-import getUniqueKeys from "../../utils/sortItems";
+import getUniqueKeys from "@/utils/sortItems";
 
 // Context
-import { ListDispatch, ListContextProvider, CurrentShoppingList } from '../../components/ContextComponents/CurrentShoppingList/context.js'
+import { ListDispatch, ListContextProvider, CurrentShoppingList } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 import { useContext } from 'react';
 
 const OpenListButton = ({ data }) => {

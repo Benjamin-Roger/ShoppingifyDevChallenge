@@ -1,13 +1,13 @@
 import theme from '../muiTheme';
 
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 
 
 const AboutPage = () => {
 
     return (
         <>
-            <Layout title="Statistics" rightPanel={''} >
+            <Layout title="About" rightPanel={''} >
 
                 <h1>About this website</h1>
 

@@ -1,7 +1,7 @@
 
 
-import { useSidePanelDispatch } from './ContextComponents/SidePanelContext';
-import { ListDispatch } from '../components/ContextComponents/CurrentShoppingList/context.js'
+import { useSidePanelDispatch } from '@/components/ContextComponents/SidePanelContext';
+import { ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 import { useContext } from 'react';
 
 import Button from '@material-ui/core/Button';

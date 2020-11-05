@@ -1,5 +1,6 @@
-import React, { createContext, useState, useContext, useReducer } from 'react'
-import ShoppingList from '../../ShoppingList.js';
+import React, { useContext, useReducer } from 'react'
+
+import ShoppingList from '@/components/ShoppingList.js';
 
 import { reducer } from './reducer.js'
 

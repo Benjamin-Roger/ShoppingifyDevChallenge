@@ -13,11 +13,11 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import { ListDispatch } from '../components/ContextComponents/CurrentShoppingList/context.js'
+import { ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 import { useContext, useEffect } from 'react';
 
-import getUniqueKeys from "../utils/sortItems";
-import AddNewItemForm from './AddNewItemForm';
+import getUniqueKeys from "@/utils/sortItems";
+import AddNewItemForm from '@/components/AddNewItemForm';
 
 import axios from 'axios';
 import CancelDialog from './CancelDialog';

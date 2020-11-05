@@ -36,3 +36,7 @@ yarn-error.log*
 
 #local reminder
 toKeep
+
+
+# testpage
+sandbox.js

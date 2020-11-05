@@ -1,5 +1,5 @@
 import App from 'next/app'
-import { SidePanelContextProvider } from '../components/ContextComponents/SidePanelContext'
+import { SidePanelContextProvider } from '@/components/ContextComponents/SidePanelContext'
 
 import "../styles/app.scss";
 

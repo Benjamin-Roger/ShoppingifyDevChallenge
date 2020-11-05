@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Head from 'next/head'
 
 
-import Header from "./Header"
+import Header from "@/components/Header"
 
 
 import theme from '../muiTheme.js';

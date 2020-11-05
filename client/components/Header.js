@@ -2,7 +2,7 @@ import Link from 'next/link'
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 
-import Navbar from './Navbar';
+import Navbar from '@/components/Navbar';
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import axios from 'axios';

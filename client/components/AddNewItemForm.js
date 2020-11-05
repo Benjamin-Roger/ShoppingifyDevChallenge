@@ -1,10 +1,9 @@
 import SidePanelButton, { useSidePanelDispatch } from './ContextComponents/SidePanelContext';
 
-import { ListDispatch } from '../components/ContextComponents/CurrentShoppingList/context.js'
+import { ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 
 import { useContext, useEffect } from 'react';
 
-import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 

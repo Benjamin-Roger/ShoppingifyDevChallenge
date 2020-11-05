@@ -1,11 +1,11 @@
-import Layout from '../components/Layout'
-import ItemButton from '../components/ItemButton'
-import ItemSearch from '../components/ItemSearch'
-import ItemCard from '../components/ItemCard'
+import Layout from '@/components/Layout'
+import ItemButton from '@/components/ItemButton'
+import ItemSearch from '@/components/ItemSearch'
+import ItemCard from '@/components/ItemCard'
 import getUniqueKeys from "../utils/sortItems";
 
 import { useContext, useImperativeHandle, useState } from 'react';
-import { ListContextProvider, CurrentShoppingList, ListDispatch } from '../components/ContextComponents/CurrentShoppingList/context.js'
+import { ListContextProvider, CurrentShoppingList, ListDispatch } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 
 
 // Insert button to add the items to the current shopping list context

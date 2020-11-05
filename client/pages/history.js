@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
-import Layout from '../components/Layout'
+import Layout from '@/components/Layout'
 
-import HistoryListItem from '../components/HistoryListItem'
+import HistoryListItem from '@/components/HistoryListItem'
 import { sortByTimeStampKey } from "../utils/sortItems";
 
 
-import { ListContextProvider, CurrentShoppingList } from '../components/ContextComponents/CurrentShoppingList/context.js'
+import { ListContextProvider, CurrentShoppingList } from '@/components/ContextComponents/CurrentShoppingList/context.js'
 
 
 const HistoryPage = ({ data }) => {
