@@ -12,6 +12,8 @@ const cors = Cors({
     methods: ['PUT'],
 })
 
+mongoose.set('useFindAndModify', false);
+
 module.exports = async (req, res) => {
 
     // Run the cors middleware
@@ -30,13 +32,13 @@ module.exports = async (req, res) => {
 
             await Lists.findOneAndUpdate({ _id: listValuesToUpdate._id }, listValuesToUpdate);
 
-            console.log('The list has been update - Update controller')
-
-            return res.status(201).json({
-                message: (listValuesToUpdate.status === 'completed') ? "The list has been completed." : "The list has been updated."
-            })
+            console.log('The list has been updated.')
 
         });
+
+        return res.status(201).json({
+            message: (listValuesToUpdate.status === 'completed') ? "The list has been completed." : "The list has been updated."
+        })
 
     }
 
