@@ -26,7 +26,7 @@ import AddNewItemForm from "@/components/AddNewItemForm";
 import axios from "axios";
 import CancelDialog from "./CancelDialog";
 
-import getConfig from "next/config";
+import { isAuthenticated } from "@/hooks/isAuthenticated";
 
 const ShoppingListItem = ({ item, editing }) => {
   // The 3 button blocks appear on click of the amount bubble
@@ -202,10 +202,10 @@ const ShoppingList = ({ listContext }) => {
       // Otherwise, we create a new list
       axios
         .post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/lists`, newList, {
-            headers: {
-              Authorization: "Bearer " + localStorage.token,
-            },
-          })
+          headers: {
+            Authorization: "Bearer " + localStorage.token,
+          },
+        })
         .then((res) => {
           addNewNotification(
             {
@@ -308,6 +308,28 @@ const ShoppingList = ({ listContext }) => {
     </Button>
   );
 
+  const isUserAuthenticated = isAuthenticated();
+
+  const loginButton = (
+    <Button
+      variant="contained"
+      size="large"
+      color="primary"
+      className="btn-dark"
+      onClick={() => {
+        addNewNotification(
+          {
+            content: `You need to log in to save a list.`,
+            severity: "info",
+          },
+          notificationDispatch
+        );
+      }}
+    >
+      Save
+    </Button>
+  );
+
   return (
     <div className="shopping-list">
       <div className="container">
@@ -319,7 +341,7 @@ const ShoppingList = ({ listContext }) => {
           </SidePanelButton>
         </div>
 
-        <div style={{ display: "flex", width:"100%" }}>
+        <div style={{ display: "flex", width: "100%" }}>
           <FormControl>
             <TextField
               id="shopping-list-name"
@@ -353,7 +375,11 @@ const ShoppingList = ({ listContext }) => {
 
         <hr />
 
-        {editing ? saveButton : completeButton}
+        {isUserAuthenticated
+          ? editing
+            ? saveButton
+            : completeButton
+          : loginButton}
       </div>
     </div>
   );
