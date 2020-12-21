@@ -1,3 +1,6 @@
+import React, { useState } from "react"
+
+
 import SidePanelButton, { useSidePanelDispatch } from '@/context/SidePanelContext';
 
 import { ListDispatch } from '@/context/CurrentShoppingList/context.js'
@@ -16,9 +19,6 @@ import AddIcon from '@material-ui/icons/Add';
 import SaveIcon from '@material-ui/icons/Save';
 
 import axios from 'axios';
-
-import getConfig from 'next/config';
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 import { addNewNotification } from '@/context/Notification/utils';
 import { NotificationDispatch } from 'context/Notification/context';
@@ -245,7 +245,7 @@ class AddNewItemForm extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${publicRuntimeConfig.BASE_API_URL}/api/items/categories`)
+    axios.get(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/items/categories`)
       .then(res => {
 
         this.setState({

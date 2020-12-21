@@ -2,6 +2,8 @@ import theme from '../muiTheme';
 
 import Layout from '@/components/Layout'
 
+import React from "react"
+
 
 const AboutPage = () => {
 

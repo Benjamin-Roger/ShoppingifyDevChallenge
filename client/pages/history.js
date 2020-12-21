@@ -1,63 +1,76 @@
-import Link from 'next/link'
+import Link from "next/link";
+import useSWR from "swr";
 
-import Layout from '@/components/Layout'
 
-import HistoryListItem from '@/components/HistoryListItem'
+import React, { useState } from "react";
+
+import Layout from "@/components/Layout";
+
+import HistoryListItem from "@/components/HistoryListItem";
 import { sortByTimeStampKey } from "../utils/sortItems";
 
+import { authFetch } from "@/utils/authFetch";
 
-import { CurrentShoppingList } from '@/context/CurrentShoppingList/context.js'
+import { CurrentShoppingList } from "@/context/CurrentShoppingList/context.js";
 
-
-const HistoryPage = ({ data }) => {
-
-
+const HistoryPage = () => {
   // Initialize the body
-  var body = '';
+  var body = "";
+
+  // Get data
+  const res = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/lists`,
+    authFetch
+  );
+  var { data, error } = res;
 
   // Apply the content for the body
-  if (data.message) {
-    body = <p>{data.message}</p>
+  if (!data) {
+    body = <p>Loading...</p>;
+  }
 
-  } else {
+  if (error) {
+    if (error?.response?.status == "401") {
+      body = (
+        <>
+          <p>Please login to have access to your history !</p>
+        </>
+      );
+    } else {
 
-    var sorted_array = sortByTimeStampKey(data, 'timestamp').reverse();
+      console.log(error)
+      body = (
+        <>
+          <p>
+            There has been an issue with the database. Sorry for the
+            inconvenience.
+          </p>
+        </>
+      );
+    }
+  }
 
-    body = (<div className="history-list">
+  if (data) {
+    var sorted_array = sortByTimeStampKey(data, "timestamp").reverse();
 
-      {
-        sorted_array.map((item, key) => <HistoryListItem
-          key={key}
-          item={item}
-        />)
-      }
-
-    </div>)
+    body = (
+      <div className="history-list">
+        {sorted_array.map((item, key) => (
+          <HistoryListItem key={key} item={item} />
+        ))}
+      </div>
+    );
   }
 
   return (
     <>
-        <Layout title="History" rightPanel={<CurrentShoppingList />} >
+      <Layout title="History" rightPanel={<CurrentShoppingList />}>
+        <h1>Shopping History</h1>
 
-          <h1>Shopping History</h1>
-
-          {body}
-
-
-        </Layout>
+        {body}
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export async function getServerSideProps(context) {
-
-  // Fetch data from external API
-  const res = await fetch(`${process.env.BASE_API_URL}/api/lists`);
-  const data = await res.json()
-
-  // Pass data to the page via props
-  return { props: { data } }
-}
-
-export default HistoryPage
-
+export default HistoryPage;

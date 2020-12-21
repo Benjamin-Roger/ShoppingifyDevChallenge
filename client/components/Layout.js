@@ -1,67 +1,85 @@
-import React from 'react';
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Head from 'next/head'
+import Head from "next/head";
 
-import Header from "@/components/Header"
+import Header from "@/components/Header";
 
-import theme from '../muiTheme.js';
-import { ThemeProvider } from '@material-ui/styles';
+import Drawer from "@material-ui/core/Drawer";
+import Fab from "@material-ui/core/Fab";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-import { useSidePanelContext } from '@/context/SidePanelContext';
+import theme from "../muiTheme.js";
+import { ThemeProvider } from "@material-ui/styles";
 
-import { PopUp } from '@/components/Notification';
+import { useSidePanelContext } from "@/context/SidePanelContext";
 
-
-
+import { PopUp } from "@/components/Notification";
 
 /**
- * Layout component 
+ * Layout component
  */
 
-
 const Layout = (props) => {
+  const sidePanelState = useSidePanelContext();
 
-    const sidePanelState = useSidePanelContext();
+  const [rightPanel, toggleRightPanel] = useState(false); // state for mobile right panel
 
-    return (
-        <>
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <div className="layout">
+          <Head>
+            <title>{props.title} - Shoppingify</title>
+            <meta
+              name="viewport"
+              content="initial-scale=1.0, width=device-width, height=device-height"
+            />
+          </Head>
 
-            <ThemeProvider theme={theme}>
+          <aside className="left-panel">
+            <Header siteTitle={props.title || "Shoppingify"} />
+          </aside>
 
-                <div className="layout">
+          <div className="main">
+            <main>{props.children}</main>
+          </div>
 
-                    <Head>
-                        <title>{props.title}  - Shoppingify</title>
-                        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-                    </Head>
+          <aside className="right-panel desktop">{props.rightPanel}</aside>
 
-                    <aside className="left-panel">
-                        <Header siteTitle={props.title || "Shoppingify"} />
-                    </aside>
+          <Drawer anchor="right" open={rightPanel}>
+            <aside className="right-panel mobile">{props.rightPanel}</aside>
+          </Drawer>
 
-                    <div className="main">
+          <Drawer anchor="right" open={sidePanelState.active}>
+            <div className="side-panel">
+              {props.sidePanel || sidePanelState.content}
+            </div>
+          </Drawer>
+        </div>
 
-                        <main>{props.children}</main>
-                    </div>
+        {props.rightPanel ? (
+          <div className="fab-wrapper">
+            <Fab
+              color="primary"
+              size="small"
+              onClick={() => toggleRightPanel(!rightPanel)}
+            >
+              {rightPanel ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </Fab>
+          </div>
+        ) : (
+          false
+        )}
 
-                    <aside className="right-panel">
-                        {props.rightPanel}
-                    </aside>
-
-                    <aside className={"side-panel " + (sidePanelState.active ? "active" : "")}>
-                        {props.sidePanel || sidePanelState.content}
-                    </aside>
-                </div >
-
-                <PopUp />
-            </ThemeProvider >
-        </>
-
-    )
-}
+        <PopUp />
+      </ThemeProvider>
+    </>
+  );
+};
 
 Layout.propTypes = {
-    children: PropTypes.node.isRequired,
-}
+  children: PropTypes.node.isRequired,
+};
 
-export default Layout
+export default Layout;

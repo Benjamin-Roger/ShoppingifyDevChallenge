@@ -1,63 +1,74 @@
 @import "variables";
 
-
 /**
  * Layout
 **/
 
 .layout {
-    display: grid;
-    grid-column-gap: 0;
-    grid-template-columns: 75px auto 25vw;
+  display: grid;
+  grid-column-gap: 0;
+  grid-template-columns: 75px auto;
+  width: 100%;
+  position: relative;
+
+  .left-panel {
+    background: #fff;
+    grid-column: 1;
+  }
+
+  .main {
+    grid-column: 2;
+    padding: 25px 10px;
     width: 100%;
-    position:relative;
+  }
 
-    .left-panel {
-        background: #fff;
-        grid-column: 1;
+  .right-panel {
+    grid-column: 3;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    flex-grow: 1;
+    display: none;
+
+    .container {
+      width: calc(100% + 20px);
+      padding: 25px;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
 
-    .main {
-        grid-column: 2;
-        padding: 25px 10px;
-        width:100%;
+    @media (min-width: 800px) {
+      display: block;
     }
+  }
+  @media (min-width: 800px) {
+    grid-template-columns: 75px auto 25vw;
+  }
+}
 
-    .right-panel {
-        grid-column: 3;
-        height: 100vh;
-        position:sticky;
-        top:0;
-        flex-grow:1;
-        
+.side-panel {
+  width: 90vw;
+  height: 100%;
 
-        .container {
-            width:calc(100% + 20px);
-            padding:25px;
-            height:100%;
-            overflow-y:scroll;
-        }
+  > * {
+    width: 100%;
+    padding: 25px;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 800px) {
+    width: 25vw;
+  }
+}
+
+.fab-wrapper {
+    position: fixed;
+    top:10px;
+    right:10px;
+    z-index:9999;
+
+    @media screen and (min-width:800px) {
+        display:none;
     }
-
-    .side-panel {
-        width:25vw;
-        height:100%;
-        right:-25vw;
-        position:absolute;
-        top:0;
-        transition:transform 0.3s ease;
-        z-index:999;
-       
-
-        &.active {
-            transform:translateX(-25vw);
-        }
-
-        >* {
-            width:100%;
-            padding:25px;
-            height:100%;
-        }
-    }
-
 }

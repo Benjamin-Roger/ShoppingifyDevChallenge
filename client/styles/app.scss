@@ -23,9 +23,10 @@ body {
     background-color: $backgroundColor;
     margin: 0;
     overflow-x: hidden;
+    overflow-y:scroll;
     color: $textColor;
-    width: calc(100vw + 15px);
-    padding-right: 15px;
+    width: 100vw;
+    box-sizing: border-box;
 }
 
 a {
@@ -138,6 +139,7 @@ li {
     height: 100%;
 
     .container {
+        padding:5px 10px;
         padding-bottom: 125px !important;
     }
     .add-item-cta {
@@ -145,6 +147,7 @@ li {
         border-radius: 10px;
         min-height: 100px;
         padding: 15px;
+        margin-top:10px;
 
         p {
             color: #fff;
@@ -250,6 +253,8 @@ li {
         display: flex;
         margin: 10px auto;
         align-items: center;
+        flex-wrap:wrap;
+        gap:5px;
 
         .name {
             flex: 2;
@@ -267,6 +272,7 @@ li {
                 text-transform: lowercase;
                 text-align: center;
                 padding: 5px;
+                margin-left:5px;
 
                 &.completed {
                     border-color: $validatedColor;
@@ -283,6 +289,10 @@ li {
         button {
             flex: unset;
             margin: auto 5px;
+        }
+
+        @media screen and (min-width:800px) {
+            flex-wrap:unset;
         }
     }
 }

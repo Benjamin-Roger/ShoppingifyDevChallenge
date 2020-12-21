@@ -2,7 +2,7 @@
 
 import { useSidePanelDispatch } from '@/context/SidePanelContext';
 import { ListDispatch } from '@/context/CurrentShoppingList/context.js'
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 
 import Button from '@material-ui/core/Button';
 

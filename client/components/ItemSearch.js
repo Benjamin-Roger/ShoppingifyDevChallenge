@@ -14,7 +14,7 @@ const ItemSearch = ({ handleFilterUpdate }) => {
   };
 
   return (
-    <div style={{ float: `right`, width: `350px`, margin: `10px` }}>
+    <div style={{ float: `right`, width: `350px`, maxWidth:`calc(100vw - 150px)`, margin: `10px` }}>
       <form noValidate autoComplete="off">
         <TextField
           style={{
