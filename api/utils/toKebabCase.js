@@ -6,7 +6,7 @@
  * @returns {string} Kebab-cased string.
  */
 
-export function toKebabCase(string) {
+function toKebabCase(string) {
     var result = string;
 
     // Convert non-camelCase capitals to lowercase.
@@ -22,4 +22,8 @@ export function toKebabCase(string) {
     result = result.replace(/-{2,}/, '-');
 
     return result;
+}
+
+module.exports = {
+    toKebabCase
 }

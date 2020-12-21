@@ -1,30 +1,31 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Define the schema
 const itemSchema = new mongoose.Schema({
-    _id: mongoose.ObjectId,
-    name: {
-        type: String,
-        required: [true, 'An item name is required']
-    },
-    note: {
-        type: String
-    },
-    image: {
-        type: String
-    },
-    amount: {
-        type: Number
-    }
-})
+  _id: mongoose.ObjectId,
+  name: {
+    type: String,
+    required: [true, "An item name is required"],
+  },
+  note: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
+  amount: {
+    type: Number,
+  },
+});
 
 // If the model already has been compiled, the schema is not applied again.
-let Items
+let Items;
 try {
-    Items = mongoose.model('items')
+  Items = mongoose.model("items");
 } catch (error) {
-    Items = mongoose.model('items', itemSchema)
+  Items = mongoose.model("items", itemSchema);
 }
 
-
-export default Items;
+module.exports = {
+  Items,
+};

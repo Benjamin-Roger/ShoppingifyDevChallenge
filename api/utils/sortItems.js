@@ -15,7 +15,7 @@ function sortByCategory(a, b) {
 }
 
 
-export function sortByTimeStampKey(array, key) {
+function sortByTimeStampKey(array, key) {
     return array.sort(function (a, b) {
         var x = new Date(a[key]);
         var y = new Date(b[key]);
@@ -25,7 +25,7 @@ export function sortByTimeStampKey(array, key) {
 
 
 // Return unique categories from array of objects (must include a "category" key)
-export default function getUniqueKeys(array, taxonomy) {
+function getUniqueKeys(array, taxonomy) {
 
     switch (taxonomy) {
         case "category":
@@ -39,3 +39,10 @@ export default function getUniqueKeys(array, taxonomy) {
 
     }
 };
+
+
+module.exports = {
+    sortByCategory,
+    getUniqueKeys,
+    sortByTimeStampKey
+}

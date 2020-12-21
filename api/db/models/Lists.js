@@ -8,7 +8,7 @@ const listSchema = new mongoose.Schema({
         required: [true, 'A list name is required']
     },
     userId: {
-        type: Object
+        type: String
     },
     items: {
         type: Array
@@ -33,4 +33,7 @@ try {
 }
 
 
-export default Lists;
+module.exports = {
+    Lists,
+  };
+  
