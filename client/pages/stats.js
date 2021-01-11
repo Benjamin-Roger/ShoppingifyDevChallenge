@@ -10,7 +10,7 @@ import { PieChart, Pie, LabelList } from "recharts";
 
 const StatsPage = ({ data }) => {
   // Initialize the body
-  var body = "";
+  let body = "";
 
   const { amountByItem, amountByCategory } = data;
 

@@ -32,13 +32,13 @@ const IndexPage = ({ data }) => {
   const [wordFilter, setWordFilter] = useState("");
 
   // Initialize the body
-  var body = "";
+  let body = "";
 
   // Apply the content for the body
   if (data.message) {
     body = <p>{data.message}</p>;
   } else {
-    var arrItems = data.filter((item) =>
+    let arrItems = data.filter((item) =>
       item.name.toLowerCase().includes(wordFilter)
     );
 

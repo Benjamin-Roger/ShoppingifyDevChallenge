@@ -15,14 +15,14 @@ import { CurrentShoppingList } from "@/context/CurrentShoppingList/context.js";
 
 const HistoryPage = () => {
   // Initialize the body
-  var body = "";
+  let body = "";
 
   // Get data
   const res = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/lists`,
     authFetch
   );
-  var { data, error } = res;
+  let { data, error } = res;
 
   // Apply the content for the body
   if (!data) {
@@ -51,7 +51,7 @@ const HistoryPage = () => {
   }
 
   if (data) {
-    var sorted_array = sortByTimeStampKey(data, "timestamp").reverse();
+    let sorted_array = sortByTimeStampKey(data, "timestamp").reverse();
 
     body = (
       <div className="history-list">

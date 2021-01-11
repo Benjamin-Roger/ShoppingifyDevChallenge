@@ -134,7 +134,7 @@ const EmptyShoppingList = () => (
 );
 
 const ShoppingList = ({ listContext }) => {
-  var items = listContext.items;
+  let items = listContext.items;
 
   const emptyList = items.length ? false : true;
 

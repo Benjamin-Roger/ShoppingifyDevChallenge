@@ -42,14 +42,14 @@ const OpenListButton = ({ data }) => {
 };
 
 const ListPage = ({ slug }) => {
-  var body = "";
+  let body = "";
 
   // Get data
   const res = useSWR(
     `${process.env.NEXT_PUBLIC_BASE_API_URL}/api/lists/view/${slug}`,
     authFetch
   );
-  var { data, error } = res;
+  let { data, error } = res;
 
   // Apply the content for the body
   if (!data) {
@@ -78,12 +78,12 @@ const ListPage = ({ slug }) => {
 
   if (data) {
     // Get items from the list
-    var arrItems = data.items;
+    let arrItems = data.items;
     const [arr, uniqueCategories] = getUniqueKeys(arrItems, "category");
 
     // Get timestamp
-    var timestamp = new Date(data.timestamp);
-    var date =
+    let timestamp = new Date(data.timestamp);
+    let date =
       new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(timestamp) +
       " " +
       (timestamp.getDay() + 1) +
@@ -92,7 +92,7 @@ const ListPage = ({ slug }) => {
       "." +
       (timestamp.getFullYear() + 1);
 
-    var body = (
+    let body = (
       <>
         <p className="timestamp">
           <EventNoteIcon />

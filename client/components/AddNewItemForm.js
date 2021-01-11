@@ -59,7 +59,7 @@ const AddNewItemFormComponent = ({ initialCategories }) => {
   const addNewCat = () => {
 
     // Get new array of categories
-    var newCategories = values.categories.concat([newCat.name]);
+    let newCategories = values.categories.concat([newCat.name]);
 
 
     setValues({

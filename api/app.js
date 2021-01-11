@@ -9,7 +9,6 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 
 var apiRouter = require("./routes/api");
-var usersRouter = require("./routes/users");
 
 var app = express();
 

@@ -50,9 +50,9 @@ const DeleteButton = ({ item, toggleDisplayNone }) => {
 };
 
 const HistoryListItem = ({ item }) => {
-  var timestamp = new Date(item.timestamp);
+  let timestamp = new Date(item.timestamp);
 
-  var date =
+  let date =
     new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(timestamp) +
     " " +
     (timestamp.getDay() + 1) +
