@@ -53,11 +53,15 @@ Create a few items with the following structure
 
 ### Environment variables
 
-Create a .env.local file at the root of the folder "api" with 2 environment variables
+Create a .env file at the root of the folder "api" with 4 environment variables
 ```
 PORT=8000
-MONGODB_CONNECTION_STRING={your MongoDB connection string}
+MONGODB_CONNECTION_STRING={{your MongoDB connection string}}
+JWT_SECRET={{your JWT secret}}
+JWT_EXPIRES_IN={{your JWT expiration duration (example : 24h)}}
 ```
+
+
 Create a .env.local file at the root of the folder "client" with 1 environment variable
 ```
 BASE_API_URL='http://localhost:8000'
@@ -70,7 +74,7 @@ In the /api folder, run
 ```shell
 npm i
 
-npm run dev
+npm start
 ```
 It will open the webserver, to serve the API requests on http:localhost:8000
 
