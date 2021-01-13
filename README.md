@@ -96,7 +96,7 @@ Deploy the example using [Vercel](https://vercel.com):
 
 ### API app
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/Benjamin-Roger/shoppingifyDevChallenge/api)
+Run the API app on your preferred host.
 
 ### Client app
 
